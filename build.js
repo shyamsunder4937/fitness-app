@@ -2,13 +2,13 @@ const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-// Ensure the build directory exists
-if (!fs.existsSync('build')) {
-  fs.mkdirSync('build');
+// Ensure the dist directory exists
+if (!fs.existsSync('dist')) {
+  fs.mkdirSync('dist');
 }
 
 // Create a simple index.html if it doesn't exist
-if (!fs.existsSync(path.join('build', 'index.html'))) {
+if (!fs.existsSync(path.join('dist', 'index.html'))) {
   console.log('Creating a simple index.html...');
   const indexHtml = `
 <!DOCTYPE html>
@@ -65,10 +65,10 @@ if (!fs.existsSync(path.join('build', 'index.html'))) {
   </body>
 </html>
   `;
-  fs.writeFileSync(path.join('build', 'index.html'), indexHtml);
+  fs.writeFileSync(path.join('dist', 'index.html'), indexHtml);
 }
 
-// Copy any necessary files from public to build
+// Copy any necessary files from public to dist
 if (fs.existsSync('public')) {
   console.log('Copying files from public directory...');
   const publicFiles = fs.readdirSync('public');
@@ -76,11 +76,11 @@ if (fs.existsSync('public')) {
   publicFiles.forEach(file => {
     if (file !== 'index.html') {  // Skip index.html as we created our own
       const sourcePath = path.join('public', file);
-      const destPath = path.join('build', file);
+      const destPath = path.join('dist', file);
       
       if (fs.statSync(sourcePath).isFile()) {
         fs.copyFileSync(sourcePath, destPath);
-        console.log(`Copied ${file} to build directory`);
+        console.log(`Copied ${file} to dist directory`);
       }
     }
   });
