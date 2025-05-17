@@ -3,8 +3,10 @@ services:
     name: fitness-app
     env: static
     buildCommand: |
+      npm install -g npm@10.2.3
+      npm install -g create-react-app
       npm install
-      npm run build
+      npx react-scripts build
     staticPublishPath: ./build
     envVars:
       - key: NODE_VERSION
@@ -13,6 +15,8 @@ services:
         value: production
       - key: CI
         value: false
+      - key: PATH
+        value: /opt/render/project/node_modules/.bin:$PATH
     headers:
       - path: /*
         name: Cache-Control
