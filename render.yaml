@@ -3,10 +3,12 @@ services:
     name: fitness-app
     env: static
     buildCommand: |
+      export PATH="$PATH:$(pwd)/node_modules/.bin"
       rm -rf node_modules package-lock.json
       npm cache clean --force
       npm install
-      CI=false npm run build
+      chmod +x node_modules/.bin/react-scripts
+      CI=false ./node_modules/.bin/react-scripts build
     staticPublishPath: ./build
     envVars:
       - key: NODE_VERSION
