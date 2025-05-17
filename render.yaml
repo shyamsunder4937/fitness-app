@@ -4,11 +4,16 @@ services:
     env: static
     buildCommand: |
       npm install
-      mkdir -p dist
       npm run build
-      ls -la dist
+      echo "Checking for publish directories:"
       ls -la
-    staticPublishPath: ./dist
+      echo "---"
+      ls -la public || echo "No public dir"
+      echo "---"
+      ls -la dist || echo "No dist dir"
+      echo "---"
+      ls -la public/dist || echo "No public/dist dir"
+    staticPublishPath: public
     pullRequestPreviewsEnabled: true
     envVars:
       - key: NODE_VERSION
