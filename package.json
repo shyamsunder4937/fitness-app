@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "16.x",
-    "npm": ">=8.0.0"
+    "node": "16.20.0",
+    "npm": "8.19.4"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -14,15 +14,16 @@
     "react-dom": "^18.2.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^6.22.3",
-    "react-scripts": "^5.0.1",
+    "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "./node_modules/.bin/react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "generate-icons": "node scripts/generate-icons.js"
+    "generate-icons": "node scripts/generate-icons.js",
+    "postinstall": "chmod +x ./node_modules/.bin/react-scripts"
   },
   "eslintConfig": {
     "extends": [
@@ -45,8 +46,5 @@
   "devDependencies": {
     "sharp": "^0.33.2",
     "svgo": "^2.8.0"
-  },
-  "resolutions": {
-    "react-scripts": "5.0.1"
   }
 }

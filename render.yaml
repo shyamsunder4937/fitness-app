@@ -3,14 +3,17 @@ services:
     name: fitness-app
     env: static
     buildCommand: |
+      export NODE_VERSION=16.20.0
+      export PATH="$PATH:/opt/render/project/node_modules/.bin"
       npm cache clean --force
       rm -rf node_modules package-lock.json
       npm install
-      npm run build
+      chmod +x node_modules/.bin/react-scripts
+      ./node_modules/.bin/react-scripts build
     staticPublishPath: ./build
     envVars:
       - key: NODE_VERSION
-        value: 18.x
+        value: 16.20.0
       - key: NODE_ENV
         value: production
       - key: CI
