@@ -6,14 +6,17 @@ services:
       export NODE_OPTIONS="--max-old-space-size=1024"
       npm cache clean --force
       rm -rf node_modules package-lock.json
+      npm install -g react-scripts
       npm install
-      npm run build
+      npx react-scripts build
     staticPublishPath: ./build
     envVars:
       - key: NODE_VERSION
         value: 16.x
       - key: NODE_ENV
         value: production
+      - key: CI
+        value: false
     headers:
       - path: /*
         name: Cache-Control

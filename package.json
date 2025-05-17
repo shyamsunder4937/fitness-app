@@ -19,11 +19,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "CI=false GENERATE_SOURCEMAP=false react-scripts build",
+    "build": "npx react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "generate-icons": "node scripts/generate-icons.js",
-    "postinstall": "npm rebuild node-sass"
+    "generate-icons": "node scripts/generate-icons.js"
   },
   "eslintConfig": {
     "extends": [
@@ -46,5 +45,8 @@
   "devDependencies": {
     "sharp": "^0.33.2",
     "svgo": "^2.8.0"
+  },
+  "resolutions": {
+    "react-scripts": "5.0.1"
   }
 }
