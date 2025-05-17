@@ -2,15 +2,29 @@ const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-// Ensure the dist directory exists
-if (!fs.existsSync('dist')) {
-  fs.mkdirSync('dist');
+console.log('Current working directory:', process.cwd());
+
+// Remove any existing dist directory and create a new one
+if (fs.existsSync('dist')) {
+  console.log('Removing existing dist directory...');
+  try {
+    fs.rmSync('dist', { recursive: true, force: true });
+  } catch (err) {
+    console.error('Error removing dist directory:', err);
+  }
 }
 
-// Create a simple index.html if it doesn't exist
-if (!fs.existsSync(path.join('dist', 'index.html'))) {
-  console.log('Creating a simple index.html...');
-  const indexHtml = `
+console.log('Creating new dist directory...');
+try {
+  fs.mkdirSync('dist', { recursive: true });
+  console.log('Dist directory created at:', path.resolve('dist'));
+} catch (err) {
+  console.error('Error creating dist directory:', err);
+}
+
+// Create a simple index.html
+console.log('Creating a simple index.html...');
+const indexHtml = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -64,8 +78,13 @@ if (!fs.existsSync(path.join('dist', 'index.html'))) {
     </div>
   </body>
 </html>
-  `;
+`;
+
+try {
   fs.writeFileSync(path.join('dist', 'index.html'), indexHtml);
+  console.log('index.html created at:', path.resolve(path.join('dist', 'index.html')));
+} catch (err) {
+  console.error('Error creating index.html:', err);
 }
 
 // Copy any necessary files from public to dist
@@ -78,12 +97,28 @@ if (fs.existsSync('public')) {
       const sourcePath = path.join('public', file);
       const destPath = path.join('dist', file);
       
-      if (fs.statSync(sourcePath).isFile()) {
-        fs.copyFileSync(sourcePath, destPath);
-        console.log(`Copied ${file} to dist directory`);
+      try {
+        if (fs.statSync(sourcePath).isFile()) {
+          fs.copyFileSync(sourcePath, destPath);
+          console.log(`Copied ${file} to dist directory at:`, path.resolve(destPath));
+        }
+      } catch (err) {
+        console.error(`Error copying ${file}:`, err);
       }
     }
   });
 }
 
+// List the contents of the dist directory
+console.log('\nContents of dist directory:');
+try {
+  const distContents = fs.readdirSync('dist');
+  distContents.forEach(item => {
+    console.log(' - ' + item);
+  });
+} catch (err) {
+  console.error('Error listing dist directory contents:', err);
+}
+
+console.log('\nBuild completed successfully!'); 
 console.log('Build completed successfully!'); 

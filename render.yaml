@@ -4,8 +4,12 @@ services:
     env: static
     buildCommand: |
       npm install
+      mkdir -p dist
       npm run build
-    staticPublishPath: dist
+      ls -la dist
+      ls -la
+    staticPublishPath: ./dist
+    pullRequestPreviewsEnabled: true
     envVars:
       - key: NODE_VERSION
         value: 18.19.0
