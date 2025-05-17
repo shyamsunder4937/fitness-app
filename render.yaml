@@ -3,20 +3,20 @@ services:
     name: fitness-app
     env: static
     buildCommand: |
-      export NODE_OPTIONS="--max-old-space-size=1024"
       npm cache clean --force
       rm -rf node_modules package-lock.json
-      npm install -g react-scripts
       npm install
-      npx react-scripts build
+      npm run build
     staticPublishPath: ./build
     envVars:
       - key: NODE_VERSION
-        value: 16.x
+        value: 18.x
       - key: NODE_ENV
         value: production
       - key: CI
         value: false
+      - key: SKIP_PREFLIGHT_CHECK
+        value: true
     headers:
       - path: /*
         name: Cache-Control
