@@ -3,22 +3,14 @@ services:
     name: fitness-app
     env: static
     buildCommand: |
-      export PATH="$PATH:$(pwd)/node_modules/.bin"
-      rm -rf node_modules package-lock.json
-      npm cache clean --force
       npm install
-      chmod +x node_modules/.bin/react-scripts
-      CI=false ./node_modules/.bin/react-scripts build
+      npm run build
     staticPublishPath: ./build
     envVars:
       - key: NODE_VERSION
         value: 18.19.0
       - key: NODE_ENV
         value: production
-      - key: CI
-        value: false
-      - key: PATH
-        value: /opt/render/project/node_modules/.bin:$PATH
     headers:
       - path: /*
         name: Cache-Control

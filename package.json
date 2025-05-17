@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "./node_modules/.bin/react-scripts start",
-    "build": "./node_modules/.bin/react-scripts build",
+    "build": "node build.js",
     "test": "./node_modules/.bin/react-scripts test",
     "eject": "./node_modules/.bin/react-scripts eject",
     "generate-icons": "node scripts/generate-icons.js"
