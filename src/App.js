@@ -1,24 +1,54 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { 
+  Route,
+  createRoutesFromElements,
+  createBrowserRouter,
+  RouterProvider,
+  Outlet
+} from 'react-router-dom';
+import Navbar from './components/Navbar';
+import HomePage from './pages/HomePage';
+import ExercisesPage from './pages/ExercisesPage';
+import ProgramsPage from './pages/ProgramsPage';
+import Nutrition from './components/Nutrition';
+import CommunityPage from './pages/CommunityPage';
+import { AuthProvider } from './context/AuthContext';
+
+// Create router with future flags
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Root />}>
+      <Route index element={<HomePage />} />
+      <Route path="exercises" element={<ExercisesPage />} />
+      <Route path="programs" element={<ProgramsPage />} />
+      <Route path="nutrition" element={<Nutrition />} />
+      <Route path="community" element={<CommunityPage />} />
+    </Route>
+  ),
+  {
+    future: {
+      v7_startTransition: true,
+      v7_relativeSplatPath: true
+    }
+  }
+);
+
+// Root layout component
+function Root() {
+  return (
+    <>
+      <Navbar />
+      <Outlet />
+    </>
+  );
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   );
 }
 

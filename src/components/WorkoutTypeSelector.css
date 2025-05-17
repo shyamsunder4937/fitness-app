@@ -1,0 +1,136 @@
+.workout-selector-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.workout-selector-modal {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.workout-selector-modal h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
+  font-size: 1.8rem;
+}
+
+.workout-types-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.workout-type-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.workout-type-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: #4CAF50;
+}
+
+.workout-type-button.selected {
+  border-color: #4CAF50;
+  background-color: #f0f9f0;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+}
+
+.workout-type-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.workout-type-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+}
+
+.workout-type-prompt {
+  text-align: center;
+  margin: 2rem 0;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 15px;
+  border: 2px dashed #dee2e6;
+}
+
+.workout-type-prompt h2 {
+  color: #333;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.change-workout-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.change-workout-btn:hover {
+  background-color: #45a049;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.change-workout-btn:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 480px) {
+  .workout-types-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .workout-selector-modal {
+    padding: 1rem;
+  }
+  
+  .workout-type-button {
+    padding: 1rem;
+  }
+  
+  .workout-type-prompt {
+    margin: 1rem 0;
+    padding: 1rem;
+  }
+  
+  .workout-type-prompt h2 {
+    font-size: 1.2rem;
+  }
+} 

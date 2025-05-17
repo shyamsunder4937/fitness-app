@@ -1,0 +1,40 @@
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logo-icon {
+  animation: spin 20s linear infinite;
+}
+
+.logo-text {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #222;
+  background: linear-gradient(135deg, #e03131, #ff6b6b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .logo-text {
+    font-size: 1.5rem;
+  }
+  
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+  }
+} 

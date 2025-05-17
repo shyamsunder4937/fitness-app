@@ -1,0 +1,207 @@
+.enrollment-sheet-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.enrollment-sheet {
+  background: white;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  border-radius: 20px;
+  overflow-y: auto;
+  position: relative;
+  animation: slideUp 0.4s ease-out;
+}
+
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #666;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.close-button:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+.enrollment-header {
+  padding: 30px;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  text-align: center;
+}
+
+.program-badge {
+  display: inline-block;
+  background: #e03131;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.enrollment-header h2 {
+  font-size: 28px;
+  color: #1a1a1a;
+  margin: 0 0 12px 0;
+}
+
+.program-level {
+  font-size: 16px;
+  color: #666;
+  margin: 0;
+}
+
+.enrollment-content {
+  padding: 30px;
+}
+
+.price-section {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #f8fafc;
+  border-radius: 12px;
+}
+
+.price-label {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.price-amount {
+  font-size: 36px;
+  font-weight: 700;
+  color: #e03131;
+}
+
+.features-section {
+  margin-bottom: 30px;
+}
+
+.features-section h3 {
+  font-size: 20px;
+  color: #1a1a1a;
+  margin: 0 0 16px 0;
+}
+
+.features-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.features-section li {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  color: #666;
+  border-bottom: 1px solid #eee;
+}
+
+.features-section li::before {
+  content: '✓';
+  color: #e03131;
+  margin-right: 12px;
+  font-weight: bold;
+}
+
+.program-description {
+  margin-bottom: 30px;
+}
+
+.program-description h3 {
+  font-size: 20px;
+  color: #1a1a1a;
+  margin: 0 0 16px 0;
+}
+
+.program-description p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.contact-info {
+  background: #f8fafc;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.contact-info h3 {
+  font-size: 20px;
+  color: #1a1a1a;
+  margin: 0 0 12px 0;
+}
+
+.contact-info p {
+  color: #666;
+  margin: 0 0 8px 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .enrollment-sheet {
+    width: 95%;
+    max-height: 95vh;
+  }
+
+  .enrollment-header {
+    padding: 20px;
+  }
+
+  .enrollment-header h2 {
+    font-size: 24px;
+  }
+
+  .enrollment-content {
+    padding: 20px;
+  }
+
+  .price-amount {
+    font-size: 30px;
+  }
+} 
