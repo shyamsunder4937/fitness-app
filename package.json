@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "16.20.0",
-    "npm": "8.19.4"
+    "node": "18.19.0",
+    "npm": "10.2.3"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -19,11 +19,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "./node_modules/.bin/react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "generate-icons": "node scripts/generate-icons.js",
-    "postinstall": "chmod +x ./node_modules/.bin/react-scripts"
+    "generate-icons": "node scripts/generate-icons.js"
   },
   "eslintConfig": {
     "extends": [
